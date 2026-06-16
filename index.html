@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>MacroFoods</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-startup-image" href="carga.jpeg">
+
     <link rel="icon" type="image/PNG" href="logpeq.PNG">
     <link rel="shortcut icon" href="logpeq.PNG">
 
@@ -124,7 +128,7 @@ margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
 color: white; overflow-x: hidden;
 }
 
-/* Capa fija para el fondo animado (Evita el bug de salto en móviles) */
+/* Capa fija para el fondo animado (Evita el bug de salto en telefono) */
 .bg-animado {
 position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;
 background: linear-gradient(-45deg, var(--bg-anim-1), var(--bg-anim-2), var(--bg-anim-3), var(--bg-anim-4));
@@ -416,6 +420,31 @@ transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(231,76,60,0.4); z-index: 
 
 .social-icon { width: 50px; height: 50px; fill: currentColor; transition: transform 0.3s, color 0.3s; }
 .social-icon:hover { transform: scale(1.1); }
+
+/* =========================================
+   AJUSTES PARA IOS DYNAMIC ISLAND (NUEVO)
+========================================= */
+@supports (padding-top: env(safe-area-inset-top)) {
+    #nav-original {
+        padding-top: env(safe-area-inset-top) !important;
+    }
+    #nav-flotante {
+        padding-top: env(safe-area-inset-top) !important;
+        height: calc(70px + env(safe-area-inset-top)) !important;
+    }
+    .cerrar-afiliado {
+        top: calc(20px + env(safe-area-inset-top)) !important;
+    }
+    .btn-toggle-menu {
+        top: calc(30px + env(safe-area-inset-top)) !important;
+    }
+    .sidebar-consola {
+        padding-top: calc(80px + env(safe-area-inset-top)) !important;
+    }
+    #modal-carrito {
+        top: calc(80px + env(safe-area-inset-top)) !important;
+    }
+}
 </style>
 </head>
 <body>
