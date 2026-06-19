@@ -12,9 +12,14 @@
   }
 </style>
 <head>
+  <head>
     <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0c10"> 
+    
     <title>MacroFoods</title>
-
     <link rel="icon" type="image/PNG" href="logpeq.PNG">
     <link rel="shortcut icon" href="logpeq.PNG">
 
@@ -138,6 +143,10 @@ html { font-size: 110%; scroll-behavior: smooth; }
 body {
 margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
 color: white; overflow-x: hidden;
+/* Protege la parte inferior (la barra de gestos del iPhone) y los laterales */
+padding-bottom: env(safe-area-inset-bottom);
+padding-left: env(safe-area-inset-left);
+padding-right: env(safe-area-inset-right);
 }
 
 /* Capa fija para el fondo animado (Evita el bug de salto en móviles) */
@@ -159,6 +168,7 @@ display: flex; flex-direction: column;
 z-index: 1000; box-sizing: border-box;
 box-shadow: 0 4px 30px rgba(0,0,0,0.5);
 padding: 0;
+padding-top: env(safe-area-inset-top);
 transition: top 0.4s ease;
 }
 
@@ -193,12 +203,15 @@ box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.3); font-family: inherit;
 
 /* NUEVA BARRA FLOTANTE (Tres rayas y mini logo) */
 #nav-flotante {
-    position: fixed; top: -100px; left: 0; width: 100%; height: 70px;
+    position: fixed; top: -100px; left: 0; width: 100%; 
+    height: calc(70px + env(safe-area-inset-top)); /* Sumamos el alto de la isla a la barra */
+    padding-top: env(safe-area-inset-top); /* Empujamos el logo y el menú hacia abajo */
     background: rgba(10, 12, 16, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15); z-index: 2000;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%; box-sizing: border-box;
+    padding-left: 5%; padding-right: 5%; box-sizing: border-box;
     transition: top 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
 }
 
 #menu-desplegable {
@@ -291,7 +304,7 @@ p { font-size: 1.25rem; line-height: 1.8; margin-bottom: 30px; }
 .afiliado-lado-der { width: 60%; background: var(--box-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; box-sizing: border-box; position: relative; transition: background 0.3s; }
 
 .cerrar-afiliado {
-position: absolute; top: 20px; right: 30px; font-size: 1.1rem; color: white;
+position: absolute; top: calc(20px + env(safe-area-inset-top)); right: 30px; font-size: 1.1rem; color: white;
 cursor: pointer; background: #e74c3c; border: 2px solid #c0392b;
 padding: 12px 25px; border-radius: 12px; font-weight: bold;
 transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(231,76,60,0.4); z-index: 3000;
@@ -322,7 +335,7 @@ transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(231,76,60,0.4); z-index: 
 
 #consola-usuario { width: 100%; height: 100%; display: none; padding: 40px; box-sizing: border-box; background: rgba(0,0,0,0.65); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); overflow-y: auto; position: relative; scroll-behavior: smooth; }
 
-.btn-toggle-menu { position: fixed; top: 30px; right: 30px; background: var(--accent); color: var(--btn-text); border: none; padding: 12px 18px; border-radius: 10px; font-size: 1.3rem; cursor: pointer; z-index: 3600; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s; font-weight: bold; }
+.btn-toggle-menu .btn-toggle-menu { position: fixed; top: calc(30px + env(safe-area-inset-top)); right: 30px; background: var(--accent); color: var(--btn-text); border: none; padding: 12px 18px; border-radius: 10px; font-size: 1.3rem; cursor: pointer; z-index: 3600; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s; font-weight: bold; }
 .btn-toggle-menu:hover { transform: scale(1.05); background: white; color: #333; }
 
 .sidebar-consola { position: fixed; top: 0; right: -320px; left: auto; width: 300px; height: 100%; background: var(--sidebar-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 3500; transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); padding: 80px 25px 30px 25px; border-left: 2px solid var(--accent); box-shadow: -5px 0 30px rgba(0,0,0,0.6); box-sizing: border-box; overflow-y: auto; }
