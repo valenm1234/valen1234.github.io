@@ -673,17 +673,22 @@ transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(231,76,60,0.4); z-index: 
 </section>
 
 <section id="s-sedes" class="seccion fade-in">
-<div class="caja" style="border-top: 5px solid var(--accent);">
-<h2 style="color: var(--text-heading);">Nuestras Sedes Logísticas</h2>
-<p style="font-size: 1.15rem; margin-bottom: 30px; color: var(--text-main);">Pasa el cursor sobre la sede para ver la dirección exacta de nuestras operaciones:</p>
-<div class="stack-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-<div class="card-sede" onmouseover="mostrarDireccion('Av. Intercomunal Petare-Guarenas, Caracas')">📍 Caracas Principal</div>
-<div class="card-sede" onmouseover="mostrarDireccion('Calle Orinoco, Las Mercedes')">📍 Las Mercedes</div>
-<div class="card-sede" onmouseover="mostrarDireccion('Urb. La Lagunita, El Hatillo')">📍 El Hatillo</div>
-<div class="card-sede" onmouseover="mostrarDireccion('Av. Urdaneta, La Candelaria')">📍 La Candelaria</div>
-</div>
-<div id="display-direccion" style="background: var(--input-bg); padding: 15px; border-radius: 10px; border: 1px dashed var(--accent); text-shadow: none; color: var(--accent);">Selecciona una sede...</div>
-</div>
+  <div class="caja" style="border-top: 5px solid var(--accent);">
+    <h2 style="color: var(--text-heading);">Nuestra Ubicación</h2>
+    <p style="font-size: 1.15rem; margin-bottom: 25px; color: var(--text-main);">Visítanos en nuestra sede principal:</p>
+    
+    <div class="card-sede-unica" style="background: var(--input-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--accent); display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <h3 style="margin: 0; color: var(--text-heading);">Universidad Santa María</h3>
+      
+      <a href="https://www.google.com/maps/search/?api=1&query=Universidad+Santa+Maria+Caracas+La+Florencia" 
+         target="_blank" 
+         style="padding: 10px 20px; background: var(--accent); color: var(--text-heading); text-decoration: none; border-radius: 6px; font-weight: bold; transition: opacity 0.3s;">
+         Ver en Google Maps
+      </a>
+      
+      <p style="margin: 0; font-size: 0.9rem; color: var(--text-main);">📍 Sede La Florencia, Caracas</p>
+    </div>
+  </div>
 </section>
 
 <section id="s-resenas" class="seccion fade-in">
